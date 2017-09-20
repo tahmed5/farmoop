@@ -14,18 +14,20 @@ class Crop:
         self._type = "Generic"
         #underscore to indicate it is private
 
+    def needs(self):
+        #return a dictionary containing the light and water needs
+        return {'light need':self._light_need,'water need':self._water_need}
 
+    #method to report the current state of a cro[
+    def report(self):
+        #return a dictionary containing the type, status, growth and days growing
+        return {'type':self._type,'status':self._status,'growth':self._growth,'days growing':self._days_growing}
         
 def main():
     #intialise the class
     new_crop = Crop(1,4,3)
-    print(new_crop._status)
-    print(new_crop._light_need)
-    print(new_crop._water_need)
-    new_crop2 = Crop(2,5,7)
-    print(new_crop2._status)
-    print(new_crop2._light_need)
-    print(new_crop2._water_need)
+    print(new_crop.needs())
+    print(new_crop.report())
     
 if __name__ == "__main__":
     main()
