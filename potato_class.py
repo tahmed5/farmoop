@@ -5,7 +5,7 @@ class Potato(Crop):
 
     #constructor
     def __init__(self):
-        #call the parent class constructor with default values for potato
+        #Call the parent class constructor with default values for potato
         # growth rate = 1; light need = 3; water need = 6
         super().__init__(1,3,6)
         self._type = "Potato"
