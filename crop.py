@@ -117,7 +117,7 @@ def manage_crop(crop):
         elif option == 0:
             noexit = False
             print()
-    print('Thank you for using the crop management program')
+    print('Thank You for using the crop management program')
 
 def main():
     #intialise the class
