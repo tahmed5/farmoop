@@ -1,0 +1,90 @@
+# oop.py
+# demo of basic Object Oriented Programming
+
+from random import *
+
+class Oop():
+    """The main class of the program."""
+    def run(self):
+        """This is the main method of the Oop class."""
+        print("*** oop.py ***")
+        print("We are going to make five objects.\nPlease give them names.")
+        # make a list and add the Things to it as we create them.
+        self.things = []
+        self.haspoked = []
+        for i in range(5):
+            print("Name of Thing %d: " %(i+1), end='')
+            self.things.append(Thing(input()))
+        # Display the Things
+        for thing in self.things:
+            print("I am: %s." %thing)
+            print("But you can call me %s." %thing.name)
+        for thing in self.things:
+            thing.age()
+        # Do ten random pokes
+        print("\nThe Things are now going to poke each other.")
+        input("Press enter to continue.")
+        for i in range(10):
+            temp = self.things[:]
+            # pop the poker off so s/he can't poke him/herself.
+            poker = temp.pop(temp.index(choice(temp)))
+            victim = choice(temp)
+            self.haspoked.append(victim)
+            poker.poke(victim)
+        # show the results
+        input("Press enter to continue.")
+        for thing in self.things:
+            thing.report()
+        input("Press enter to continue.")
+        print('Time To Unpoke Some Players')
+        for i in range(3):
+            temp = self.things[:]
+            unpokedthing = choice(temp)
+            thing.unpoked(unpokedthing)
+        print('Updated Report')
+        for thing in self.things:
+            thing.report()
+                                  
+        
+        
+        
+
+class Thing():
+    """Thing class."""
+    def __init__(self, name):
+        """The constructor. Things have a name and a counter to record pokes."""
+        self.name = name
+        self.pokes = 0
+
+    def age(self):
+        age = randint(1,50)
+        print('The age of', self.name, 'is', age)
+        
+    def poke(self, who):
+        """This invokes the poked() method of "who" and passes a copy of itself along."""
+        who.poked(self)
+        
+    def unpoked(self,unpoke):
+        self = unpoke
+        if self.pokes != 0:
+            self.pokes = self.pokes - 1
+        else:
+            self.pokes = 0
+        
+
+    def poked(self, poker):
+        """Increments the number of pokes. Prints a message naming the poker."""
+        self.pokes += 1
+        self.bepoked = []
+        self.bepoked.append(self.name)
+        print(self.bepoked)
+        print(poker.name,'has poked', self.name)
+
+    def report(self):
+        """The Things tell us how often they have been poked."""
+        print("My name is " + self.name + " and I have been poked %d time(s)." %self.pokes)
+
+if __name__ == "__main__":
+    myOop = Oop()
+    myOop.run()
+
